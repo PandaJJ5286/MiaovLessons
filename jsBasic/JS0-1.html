@@ -7,26 +7,102 @@
 		html,body,div,span,a{padding:0px;margin:0px;font-family: "Microsoft Yahei";font-size:14px;}
 		a{text-decoration: none;display: inline-block;}
 		html,body{height:100%;width:100%;min-height:200px;min-width: 260px;background-color: #efefef;}
-		#mask{height:100%;width:100%;background-color: rgba(0,0,0,0.4);filter:alpha(opacity=40);position: relative;display: none;}
+		#mask{height:100%;width:100%;background-color: rgba(0,0,0,0.4);filter:alpha(opacity=40);position: fixed;display: none;}
 		#middle_sel{height:180px;width:260px;position:absolute;top:50%;left:50%;margin-top:-110px;margin-left:-150px;border:20px solid gray;background-color: white;}
 		#middle_sel div{height:30px;margin-top:10px;}
 		#middle_sel span{display:inline-block;width:120px;height:20px;text-align: right;line-height: 20px;color:black;}
 		#middle_sel a{width:34px;height:30px;text-align:center;line-height:30px;color:#858d8d;border:1px solid #c1c1c1;}
 		#middle_sel a:hover{background-color: #cf9500;color:#000;}
 		#middle_sel #red{background-color: #9dcf00;color:#fff;}
-		#middle_sel #red:hover{background-color: red;}
+		#middle_sel #red:hover{background-color: red;border:1px solid #000;}
 		#middle_sel #yellow{background-color: #efbd00;color:yellow;}
 		#middle_sel #yellow:hover{background-color: yellow;color:#fff;}
 		#middle_sel #blue{background-color: #5a95ef;color:#fff;}
 		#middle_sel #blue:hover{background-color: blue;color:#fff;}
-		#middle_sel #unsave,#middle_sel #save{width:60px;height:30px;background-color: #002852;color:white;}
-		#middle_sel #unsave:hover,#middle_sel #save:hover{background-color:  #002852;color:white;}
+		#middle_sel #red:hover,#middle_sel #yellow:hover,#middle_sel #blue:hover{border:1px solid #000;}
+		#middle_sel #unSave,#middle_sel #save{width:60px;height:30px;background-color: #002852;color:white;}
+		#middle_sel #unSave:hover,#middle_sel #save:hover{background-color:  #002852;color:white;}
 		#middle_sel .option{margin-left:70px;}
-		#content{margin-top:20px;margin-left: 20px;}
+		#content{padding-top:20px;padding-left: 20px;}
 		#content span{font-size:20px;font-weight: bold;}
 		#content #set{display:inline-block;width:100px;height:40px;text-align:center;line-height:40px;background-color: red;color:white;font-size:14px;font-weight: normal;}
 		#ele{width:100px;height:100px;border: 4px solid #000;background-color: white;margin-top: 20px;}
 	</style>
+	<script>
+		window.onload = function(){
+			var oMask = document.getElementById("mask");
+			var oSel = document.getElementById("middle_sel");
+			var oRed = document.getElementById("red");
+			var oYellow = document.getElementById("yellow");
+			var oBlue = document.getElementById("blue");
+			var oWTwo = document.getElementById("wTwo");
+			var oWThree = document.getElementById("wThree");
+			var oWFour = document.getElementById("wFour");
+			var oHTwo = document.getElementById("hTwo");
+			var oHThree = document.getElementById("hThree");
+			var oHFour = document.getElementById("hFour"); 
+			var oUnSave = document.getElementById("unSave");
+			var oSave = document.getElementById("save");
+
+			var oSet = document.getElementById("set");
+			var oEle = document.getElementById("ele");
+
+			var oldColor,oldWidth,oldHeight;
+
+			oSet.onclick = function(){
+				oMask.style.display = "block";
+				oldColor = oEle.style.backgroundColor;
+				oldWidth = oEle.style.width;
+				oldHeight = oEle.style.height;
+			};
+
+			oRed.onclick = function(){
+				oEle.style.backgroundColor = "red";
+			};
+
+			oYellow.onclick = function(){
+				oEle.style.backgroundColor = "yellow";
+			};
+
+			oBlue.onclick = function(){
+				oEle.style.backgroundColor = "blue";
+			}
+
+			oWTwo.onclick = function(){
+				oEle.style.width = "200px";
+			};
+
+			oWThree.onclick = function(){
+				oEle.style.width = "300px";
+			};
+
+			oWFour.onclick = function(){
+				oEle.style.width = "400px";
+			};
+			
+			oHTwo.onclick = function(){
+				oEle.style.height = "200px";
+			};
+			
+			oHThree.onclick = function(){
+				oEle.style.height = "300px";
+			};
+
+			oHFour.onclick = function(){
+				oEle.style.height = "400px";
+			};
+
+			oUnSave.onclick = function(){
+				oEle.style.backgroundColor = oldColor;
+				oEle.style.width = oldWidth;
+				oEle.style.height = oldHeight;
+			};
+
+			oSave.onclick = function(){
+				oMask.style.display = "none";
+			}
+		};
+	</script>
 </head>
 <body>
 	<div id="mask">
@@ -47,10 +123,10 @@
 				<span>请选择高(px)：</span>
 				<a href="JavaScript:;" id="hTwo">200</a>
 				<a href="JavaScript:;" id="hThree">300</a>
-				<a href="JavaScript:;" id="gFour">400</a>
+				<a href="JavaScript:;" id="hFour">400</a>
 			</div>
 			<div class="option">
-				<a href="JavaScript:;" id="unsave">恢复</a>
+				<a href="JavaScript:;" id="unSave">恢复</a>
 				<a href="JavaScript:;" id="save">确认</a>
 			</div>
 		</div>
