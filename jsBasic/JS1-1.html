@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>JS1-属性操作、图片切换</title>
+	<style>
+		body,div,input,p,img,a{padding:0;margin:0;font-family: "Microsoft Yahei";}
+		a{text-decoration: none;}
+		#content{width:500px;height:600px;margin:0 auto;}
+		#btn{width:150px;margin:0 auto;height:50px;line-height: 50px;}
+		#loop,#order{width:60px;height:20px;}
+		#func{text-align:center;font-size:18px;margin-bottom: 15px;}
+		#album{position:relative;}
+		#album a{position:absolute;top:50%;margin-top:-20px;display: block;width:40px;height:40px;text-align:center;line-height:40px;font-size:24px;color:#000;background-color:#ccc;border:2px solid white;opacity:0.7;filter:alpha(opacity:70);}
+		#album a:hover{opacity:0.3;filter:alpha(opacity:30);}
+		#prev{left:5px;}
+		#next{right:5px;}
+		#img{width:500px;height:500px;}
+		#index,#intro{position: absolute;background-color: black;opacity:0.7;filter:alpha(opacity:70);color:white;width:500px;height:40px;line-height:40px;text-align: center;}
+		#index{top:0;}
+		#intro{bottom:4px;}
+	</style>
+</head>
+<body>
+	<div id="content">
+		<div id="btn">
+			<input type="button" value="循环切换" id="loop">
+			<input type="button" value="顺序切换" id="order">
+		</div>
+		<p id="func">图片可从最后一张切换到第一张循环切换</p>
+		<div id="album">
+			<img src="js1-img/1.jpg" alt="" id="img">
+			<a href="JavaScript:;" id="prev"><</a>
+			<a href="JavaScript:;" id="next">></a>
+			<p id="index">1 / 4</p>
+			<p id="intro">第一张图片内容</p>
+		</div>
+	</div>
+</body>
+</html>
