@@ -15,11 +15,95 @@
 		#album a:hover{opacity:0.3;filter:alpha(opacity:30);}
 		#prev{left:5px;}
 		#next{right:5px;}
-		#img{width:500px;height:500px;}
+		#img{width:500px;height:500px;line-height:500px;text-align: center;}
 		#index,#intro{position: absolute;background-color: black;opacity:0.7;filter:alpha(opacity:70);color:white;width:500px;height:40px;line-height:40px;text-align: center;}
 		#index{top:0;}
 		#intro{bottom:4px;}
 	</style>
+
+	<script>
+		window.onload = function(){
+			var oLoop = document.getElementById("loop");
+			var oOrder = document.getElementById("order");
+			var oFunc = document.getElementById("func");
+			var oImg = document.getElementById("img");
+			var oPrev = document.getElementById("prev");
+			var oNext = document.getElementById("next");
+			var oIndex = document.getElementById("index");
+			var oIntro = document.getElementById("intro");
+
+			var imgArr = ["js1-img/1.jpg","js1-img/2.jpg","js1-img/3.jpg","js1-img/4.jpg"]
+			var introArr = ["游戏mm","运动型男","性感mm","古装mm"];
+
+			var num = 0;
+		
+			function change(){
+				oImg.src = imgArr[num];
+				oIndex.innerHTML = (num + 1) + " / " + imgArr.length;
+				oIntro.innerHTML = introArr[num];
+			}
+
+			oLoop.onclick = function(){
+				
+				change();
+				
+				oFunc.innerHTML = "图片只能到最后一张或只能到第一张顺序切换"
+
+				oPrev.onclick = function(){
+
+					num--;
+
+					if(num == -1){
+						num = imgArr.length-1;
+					}
+
+					change();
+				};
+
+				oNext.onclick = function(){
+
+					num++;
+
+					if(num == imgArr.length){
+						num = 0;
+					}
+
+					change();
+				};
+			};
+
+			oOrder.onclick = function(){
+				
+				change();
+
+				oFunc.innerHTML = "图片可从最后一张切换到第一张循环切换"
+
+				oPrev.onclick = function(){
+
+					num--;
+
+					if(num == -1){
+						alert("不好意思，已经是第一张图片了~~");
+						num = 0;
+					}
+
+					change();
+				};
+
+				oNext.onclick = function(){
+
+					num++;
+
+					if(num == imgArr.length){
+						alert("不好意思，已经是最后一张图片了~~");
+						num = imgArr.length-1;
+					}
+
+					change();
+				};
+			};
+		};
+	</script>
 </head>
 <body>
 	<div id="content">
@@ -29,12 +113,12 @@
 		</div>
 		<p id="func">图片可从最后一张切换到第一张循环切换</p>
 		<div id="album">
-			<img src="js1-img/1.jpg" alt="" id="img">
+			<img src="" alt="请选择图片切换方式" id="img">
 			<a href="JavaScript:;" id="prev"><</a>
 			<a href="JavaScript:;" id="next">></a>
-			<p id="index">1 / 4</p>
-			<p id="intro">第一张图片内容</p>
+			<p id="index">图片加载中。。。</p>
+			<p id="intro">图片加载中。。。</p>
 		</div>
 	</div>
 </body>
-</html>
+</html>;
