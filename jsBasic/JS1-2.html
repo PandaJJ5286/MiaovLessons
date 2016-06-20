@@ -3,14 +3,73 @@
 <head>
 	<meta charset="UTF-8">
 	<title>JS1-2：属性操作、模拟手机短信发送</title>
+	<style type="text/css">
+		div,img,input,span{padding:0;margin:0;font-family: "Microsoft Yahei";}
+		#mobile{width:289px;height:594px;background: url(js1-img/2/body-bg.png) no-repeat;margin: 0 auto;position: relative;}
+		#msg{height:370px;width:237px;position:absolute;top:87px;left:26px;overflow-x: auto;}
+		.inp{height:48px;width:237px;line-height:48px;position:absolute;bottom: 88px;left: 26px;border-top:1px solid #bdcec6;}
+		#look{position:absolute;top:7px;left:4px;display:inline-block;width:30px;height:34px;border:1px solid #ded6e7;border-radius:5px;}
+		#look img{position:absolute;top:5px;left:3px;cursor:pointer;}
+		#txt{position:absolute;top:7px;left:41px;width:139px;height:34px;line-height:34px;border:1px solid #ded6e7;border-radius: 5px;text-indent:10px;}
+		#send{display:inline-block;width:46px;height:34px;line-height:34px;position:absolute;top:7px;left:187px;font-size:22px;color:#8c8494;}
+		.staff,.boss{margin-top:6px;}
+		.staff{text-align: right;}
+		.boss{text-align: left;}
+		.staff img,.boss img{width:24px;height:24px;vertical-align:top;}
+		.staff span,.boss span{display:inline-block;font-size: 14px;max-width: 155px;padding:5px;word-wrap: break-word;}
+		.staff img{margin-left:2px;}
+		.boss img{margin-right: 2px;}
+		.staff span{background-color: #21c618;color:#fff;margin-left:28px;text-align: left;}
+		.boss span{background-color: #ded6e7;margin-right:28px;color:#000;text-align: left;}
+	</style>
+
+	<script type="text/javascript">
+		window.onload = function(){
+			var oMsg = document.getElementById('msg');
+			var oLook = document.getElementById('look');
+			var oImg = oLook.getElementsByTagName('img')[0];
+			var oTxt = document.getElementById('txt');
+			var oSend = document.getElementById('send');
+
+			var flag = true;
+
+			oLook.onclick = function(){
+				
+				if(flag == true){
+					oImg.src = "js1-img/2/boss.png";
+					flag = false;
+				}else{
+					oImg.src = "js1-img/2/staff.png";
+					flag = true;
+				}
+
+			};
+
+			oSend.onclick = function(){
+				if(oTxt.value == ""){
+					alert("哥们，多少说点什么吧！");
+					return;
+				}
+				if(flag == true){
+					oMsg.innerHTML = '<div class="staff"><span>' + oTxt.value + '</span><img src="js1-img/2/staff.png" alt=""></div>' + oMsg.innerHTML;
+					oTxt.value = "";
+				}else{
+					oMsg.innerHTML = '<div class="boss"><img src="js1-img/2/boss.png" alt=""><span>' + oTxt.value + '</span></div>' + oMsg.innerHTML;
+					oTxt.value = "";
+				}
+			};
+		}
+	</script>
 </head>
 <body>
 	<div id="mobile">
-		<div id=msg""></div>
-		<div>
-			<img src="" alt="" id="look">
-			<input type="text" value="">
-			<input type="button" value="发送">
+		<div id="msg"></div>
+		<div class="inp">
+			<div id="look">
+				<img src="js1-img/2/staff.png" alt="">
+			</div>
+			<input type="text" value="" id="txt">
+			<span id="send">发送</span>
 		</div>
 	</div>
 </body>
