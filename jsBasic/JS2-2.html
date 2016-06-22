@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>JS2-2 自动生成100个LI（提高版）</title>
+	<style>
+		ul{padding: 0;margin:10px;position:relative;}
+		li{list-style:none;width:50px;height:50px;line-height: 50px;text-align: center;font-size:30px;position:absolute;border:1px solid #000;}
+	</style>
+	<script>
+	window.onload = function(){
+		var oBtn = document.getElementById('btn');
+		var oUl = document.getElementById('list');
+
+		var onOff = true;
+		var str = "";
+		var color = ["red","yellow","blue","green"];
+		oBtn.onclick = function(){
+			if(onOff == true){
+				
+				// 两层循环嵌套分别生成行、列；实现100个LI自动生成
+				for (var i = 0; i < 10; i++) {
+
+					for (var j = 0; j < 10; j++) {
+						str += "<li style='background-color:" + color[(10*i+j)%4]+ ";left:" + (10 + 60*j) + "px;top:" + (10 + 60*i) + "px;'>"+ (10*i+j) +"</li>"
+						
+					};
+				}
+
+				oUl.innerHTML = str;
+
+			}else{
+				alert("不好意思，只能生成100个~~");
+			}
+			onOff = false;
+		};
+	};
+	</script>
+</head>
+<body>
+	<input type="button" value="自动生成100个li" id="btn">
+	<ul id="list"></ul>
+</body>
+</html>
