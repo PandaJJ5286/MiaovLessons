@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>JS2-1 自动生成10个LI（基础版）</title>
+	<style>
+		ul{padding: 0;margin:10px;position:relative;}
+		li{list-style:none;width:50px;height:50px;line-height: 50px;text-align: center;font-size:30px;position:absolute;border:1px solid #000;}
+	</style>
+	<script>
+	window.onload = function(){
+		var oBtn = document.getElementById('btn');
+		var oUl = document.getElementById('list');
+
+		var onOff = true;
+		var str = "";
+		var color = ["red","yellow","blue","green"];
+		oBtn.onclick = function(){
+			if(onOff == true){
+				
+				//一种实现颜色变化的方法:利用for循环索引进行颜色属性添加
+				/*
+				for (var i = 0; i < 10; i++) {
+					str += "<li>"+ i +"</li>"
+				}
+
+				oUl.innerHTML = str;
+				var aLi = document.getElementsByTagName('li');
+
+				for (var i = 0; i < aLi.length; i++) {
+					aLi[i].style.left = i*60 +"px";
+					if (i % 4 == 0) {
+						aLi[i].style.backgroundColor = "red";
+					} else if (i % 4 == 1) {
+						aLi[i].style.backgroundColor = "yellow";
+					} else if (i % 4 == 2) {
+						aLi[i].style.backgroundColor = "blue";
+					} else{
+						aLi[i].style.backgroundColor = "green";
+					}
+				}
+				*/
+
+				// 另外一种添加颜色循环变化的方法，利用color数组赋值，同时将left的值进行赋值。
+
+
+				for (var i = 0; i < 10; i++) {
+					str += "<li style='background-color:" + color[i%4]+ ";left:" + (10 + 60*i) + "px;'>"+ i +"</li>"
+				}
+
+				oUl.innerHTML = str;
+
+			}else{
+				alert("不好意思，只能生成10个~~");
+			}
+			onOff = false;
+		};
+	};
+	</script>
+</head>
+<body>
+	<input type="button" value="自动生成10个li" id="btn">
+	<ul id="list"></ul>
+</body>
+</html>
