@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>JS2-3 自动生成V字型（基础版）</title>
+	<style>
+		ul{padding: 0;margin:10px;position:relative;}
+		li{list-style:none;width:50px;height:50px;line-height: 50px;text-align: center;font-size:30px;position:absolute;border:1px solid #000;background-color: red;}
+	</style>
+	<script>
+	window.onload = function(){
+		var oBtn = document.getElementById('btn');
+		var oUl = document.getElementById('list');
+
+		var onOff = true;
+		var str = "";
+		
+		oBtn.onclick = function(){
+			if(onOff == true){
+				
+				// 两层循环嵌套分别生成行、列；实现100个LI自动生成
+				for (var i = 0; i < 3; i++) {
+					str += "<li style='left:" + 50*i + "px;top:" + 50*i + "px;'>"+ i +"</li>"
+				};
+
+				oUl.innerHTML = str;
+
+			}else{
+				alert("不好意思，只能生成100个~~");
+			}
+			onOff = false;
+		};
+	};
+	</script>
+</head>
+<body>
+	<input type="button" value="自动生成100个li" id="btn">
+	<ul id="list"></ul>
+</body>
+</html>
