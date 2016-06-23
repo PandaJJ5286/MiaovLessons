@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>JS2-4 自动生成V字型（提高版）</title>
+	<style>
+		ul{padding: 0;position:relative;}
+		li{list-style:none;width:50px;height:50px;line-height: 50px;text-align: center;font-size:30px;position:absolute;color:#fff;background-color: red;}
+	</style>
+	<script>
+	window.onload = function(){
+		var oNum = document.getElementById('num');
+		var oBtn = document.getElementById('btn');
+		var oUl = document.getElementById('list');
+
+		var count = 1;
+		var str = "";
+		
+		oBtn.onclick = function(){
+			changeV(oNum.value);
+		};
+
+		function changeV(len){
+			
+			if (len == "") {
+				alert("请输入一个大于1的奇数，用来生成V字！");
+				return;
+			};
+
+			if (len % 2 == 0 || len == 1) {
+				alert("请输入大于1的奇数，这样才能形成真正的V字！");
+				return;
+			};
+
+			if(count % 4 == 1){
+				str = "";
+				for (var i = 0; i < len; i++) {
+					if (i < len/2) {
+						str += "<li style='left:" + 50*i + "px;top:" + 50*(Math.floor(len/2)-i) + "px;'>"+ i +"</li>"
+					} else{
+						str += "<li style='left:" + 50*i + "px;top:" + 50*(i-Math.floor(len/2)) + "px;'>"+ i +"</li>"
+					};
+				};
+			}else if(count % 4 == 2){
+				str = "";
+				for (var i = 0; i < len; i++) {
+					if (i < len/2) {
+						str += "<li style='left:" + 50*i + "px;top:" + 50*i + "px;'>"+ i +"</li>"
+					} else{
+						str += "<li style='left:" + 50*(len-i-1) + "px;top:" + 50*i  + "px;'>"+ i +"</li>"
+					};
+				};
+			}else if(count % 4 == 3){
+				str = "";
+				for (var i = 0; i < len; i++) {
+					if (i < len/2) {
+						str += "<li style='left:" + 50*i + "px;top:" + 50*i + "px;'>"+ i +"</li>"
+					} else{
+						str += "<li style='left:" + 50*i + "px;top:" + 50*(len-i-1)  + "px;'>"+ i +"</li>"
+					};
+				};
+			}else {
+				str = "";
+				for (var i = 0; i < len; i++) {
+					if (i < len/2) {
+						str += "<li style='left:" + 50*(Math.floor(len/2)-i) + "px;top:" + 50*i + "px;'>"+ i +"</li>"
+					} else{
+						str += "<li style='left:" + 50*(i-Math.floor(len/2)) + "px;top:" + 50*i  + "px;'>"+ i +"</li>"
+					};
+				};
+			}
+
+			oUl.innerHTML = str;
+			count++;
+		}
+	};
+	</script>
+</head>
+<body>
+	<input type="text" value="" id="num">
+	<input type="button" value="切换V字形状" id="btn">
+	<ul id="list"></ul>
+</body>
+</html>

@@ -5,7 +5,7 @@
 	<title>JS2-3 自动生成V字型（基础版）</title>
 	<style>
 		ul{padding: 0;margin:10px;position:relative;}
-		li{list-style:none;width:50px;height:50px;line-height: 50px;text-align: center;font-size:30px;position:absolute;border:1px solid #000;background-color: red;}
+		li{list-style:none;width:50px;height:50px;line-height: 50px;text-align: center;font-size:30px;position:absolute;color:#fff;background-color: red;}
 	</style>
 	<script>
 	window.onload = function(){
@@ -16,17 +16,20 @@
 		var str = "";
 		
 		oBtn.onclick = function(){
-			if(onOff == true){
+			if(onOff == true)
 				
-				// 两层循环嵌套分别生成行、列；实现100个LI自动生成
-				for (var i = 0; i < 3; i++) {
-					str += "<li style='left:" + 50*i + "px;top:" + 50*i + "px;'>"+ i +"</li>"
+				for (var i = 0; i < 5; i++) {
+					if (i == 2) {
+						str += "<li style='left:" + 50*i + "px;top:" + 50*i + "px;'>"+ i +"</li>"
+					} else{
+						str += "<li style='left:" + 50*i + "px;top:" + 50*(i%2) + "px;'>"+ i +"</li>"
+					};
 				};
 
 				oUl.innerHTML = str;
 
 			}else{
-				alert("不好意思，只能生成100个~~");
+				alert("不好意思，只能生成一个V字形~~");
 			}
 			onOff = false;
 		};
@@ -34,7 +37,7 @@
 	</script>
 </head>
 <body>
-	<input type="button" value="自动生成100个li" id="btn">
+	<input type="button" value="自动生成一个V字形" id="btn">
 	<ul id="list"></ul>
 </body>
 </html>
