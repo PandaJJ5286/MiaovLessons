@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>JS2-5 鼠标移入出现悬浮框（兼容各浏览器）</title>
+	<style>
+		div,ul,li,img,span,h3{padding:0;margin:0;}
+		li{list-style:none;float: left;padding:10px 19px 10px 10px;position: relative;}
+		ul{border-top:1px solid #9c9c9c;padding-top: 10px;margin-top:5px; }
+		#container{width:510px;margin:100px auto;}
+		span{position: absolute;background: url(js2-img/2-5/13.png);display:none;width:229px;height:135px;top:-80px;left:30px;}
+	</style>
+
+	<script>
+	window.onload = function(){
+		var aLi = document.getElementsByTagName('li');
+		var aImg = document.getElementsByTagName('img');
+		var aSpan = document.getElementsByTagName('span');
+
+		for (var i = 0; i < aImg.length; i++) {
+			aImg[i].index = i;
+			aImg[i].onmouseover = function(){
+				aSpan[this.index].style.display = 'block';
+				saLi[this.index].style.zIndex = this.index+1;
+			};
+			aImg[i].onmouseout = function(){
+				aSpan[this.index].style.display = 'none';
+				aLi[this.index].style.zIndex = '';
+			};
+		};
+	};
+	</script>
+</head>
+<body>
+	<div id="container">
+		<h3>最新上线</h3>
+		<ul>
+			<li>
+				<img src="js2-img/2-5/01.png" alt="">
+				<span></span>
+			</li>
+			<li>
+				<img src="js2-img/2-5/02.png" alt="">
+				<span></span>
+			</li>
+			<li>
+				<img src="js2-img/2-5/03.png" alt="">
+				<span></span>
+			</li>
+			<li>
+				<img src="js2-img/2-5/04.png" alt="">
+				<span></span>
+			</li>
+			<li>
+				<img src="js2-img/2-5/05.png" alt="">
+				<span></span>
+			</li>
+			<li>
+				<img src="js2-img/2-5/06.png" alt="">
+				<span></span>
+			</li>
+			<li>
+				<img src="js2-img/2-5/07.png" alt="">
+				<span></span>
+			</li>
+			<li>
+				<img src="js2-img/2-5/08.png" alt="">
+				<span></span>
+			</li>
+			<li>
+				<img src="js2-img/2-5/09.png" alt="">
+				<span></span>
+			</li>
+			<li>
+				<img src="js2-img/2-5/10.png" alt="">
+				<span></span>
+			</li>
+			<li>
+				<img src="js2-img/2-5/11.png" alt="">
+				<span></span>
+			</li>
+			<li>
+				<img src="js2-img/2-5/12.png" alt="">
+				<span></span>
+			</li>
+		</ul>
+	</div>
+</body>
+</html>
