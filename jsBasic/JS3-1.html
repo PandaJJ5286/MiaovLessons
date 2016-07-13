@@ -20,21 +20,22 @@
 			var aLi = oUl.getElementsByTagName('li');
 			var oImg = null;
 			var oLiUl = null;
-			var onOff = true;
+
+			var num = null;
+			
 			for (var i = 0; i < aLi.length; i++) {
+				aLi[i].index = i;
+				
 				aLi[i].onclick =function(){
-					oImg = this.getElementsByTagName('img')[0];
-					oLiUl = this.getElementsByTagName('ul')[0];
-					if(onOff == true){
-						oImg.src = "js3-img/3-1/ico2.gif";
-						oLiUl.style.display = 'block';
-						onOff = false;
-					}else{
-						oImg.src = "js3-img/3-1/ico1.gif";
-						oLiUl.style.display = 'none';
-						onOff = true;
+					if(typeof num ==='number'){
+						aLi[num].getElementsByTagName('img')[0].src = "js3-img/3-1/ico1.gif";
+						aLi[num].getElementsByTagName('ul')[0].style.display = "none";
 					}
-					
+					if(num !== this.index){
+						this.getElementsByTagName('img')[0].src = "js3-img/3-1/ico2.gif";
+						this.getElementsByTagName('ul')[0].style.display = 'block';
+					}
+					num = this.index;
 				};
 			};
 		};
