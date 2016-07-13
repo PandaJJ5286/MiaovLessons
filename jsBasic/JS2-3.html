@@ -3,37 +3,37 @@
 <head>
 	<meta charset="UTF-8">
 	<title>JS2-3 自动生成V字型（基础版）</title>
-	<style>
+	<style  type="text/css">
 		ul{padding: 0;margin:10px;position:relative;}
 		li{list-style:none;width:50px;height:50px;line-height: 50px;text-align: center;font-size:30px;position:absolute;color:#fff;background-color: red;}
 	</style>
-	<script>
-	window.onload = function(){
-		var oBtn = document.getElementById('btn');
-		var oUl = document.getElementById('list');
+	<script type="text/javascript">
+		window.onload = function(){
+			var oBtn = document.getElementById('btn');
+			var oUl = document.getElementById('list');
 
-		var onOff = true;
-		var str = "";
-		
-		oBtn.onclick = function(){
-			if(onOff == true){
-				
-				for (var i = 0; i < 5; i++) {
-					if (i == 2) {
-						str += "<li style='left:" + 50*i + "px;top:" + 50*i + "px;'>"+ i +"</li>"
-					} else{
-						str += "<li style='left:" + 50*i + "px;top:" + 50*(i%2) + "px;'>"+ i +"</li>"
+			var onOff = true;
+			var str = "";
+			
+			oBtn.onclick = function(){
+				if(onOff == true){
+					
+					for (var i = 0; i < 5; i++) {
+						if (i == 2) {
+							str += "<li style='left:" + 50*i + "px;top:" + 50*i + "px;'>"+ i +"</li>"
+						} else{
+							str += "<li style='left:" + 50*i + "px;top:" + 50*(i%2) + "px;'>"+ i +"</li>"
+						};
 					};
-				};
 
-				oUl.innerHTML = str;
+					oUl.innerHTML = str;
 
-			}else{
-				alert("不好意思，只能生成一个V字形~~");
-			}
-			onOff = false;
+				}else{
+					alert("不好意思，只能生成一个V字形~~");
+				}
+				onOff = false;
+			};
 		};
-	};
 	</script>
 </head>
 <body>
