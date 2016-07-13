@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>JS3-1 QQ列表展开收缩扩展</title>
+	<style type="text/css">
+		body,div,ul,li,img{margin:0;padding:0;font-family: 'Microsoft Yahei'}
+		li{list-style:none; }
+		#container{width:300px;margin:0 auto;border:1px solid #000;}
+		.level1{background: #63f7ff;font-size:24px;}
+		.level1 img {padding: 0 5px;}
+		.level1 ul{display: none;}
+		.level2{width:281px;background: #fff;border-bottom:1px solid #000;padding-left: 19px;font-size: 16px;}
+	</style>
+
+	<script type="text/javascript">
+		window.onload = function(){
+			var oCon = document.getElementById('container');
+			var oUl = oCon.getElementsByTagName('ul')[0];
+			var aLi = oUl.getElementsByTagName('li');
+			var oImg = null;
+			var oLiUl = null;
+			var onOff = true;
+			for (var i = 0; i < aLi.length; i++) {
+				aLi[i].onclick =function(){
+					oImg = this.getElementsByTagName('img')[0];
+					oLiUl = this.getElementsByTagName('ul')[0];
+					if(onOff == true){
+						oImg.src = "js3-img/3-1/ico2.gif";
+						oLiUl.style.display = 'block';
+						onOff = false;
+					}else{
+						oImg.src = "js3-img/3-1/ico1.gif";
+						oLiUl.style.display = 'none';
+						onOff = true;
+					}
+					
+				};
+			};
+		};
+	</script>
+</head>
+<body>
+	<div id="container">
+		<ul>
+			<li class="level1">
+				<img src="js3-img/3-1/ico1.gif" alt="">我的好友
+				<ul>
+					<li class="level2">Panda1</li>
+					<li class="level2">Panda2</li>
+					<li class="level2">Panda3</li>
+					<li class="level2">Panda4</li>
+				</ul>
+			</li>
+			<li class="level1">
+				<img src="js3-img/3-1/ico1.gif" alt="">企业好友
+				<ul>
+					<li class="level2">Panda5</li>
+					<li class="level2">Panda6</li>
+					<li class="level2">Panda7</li>
+				</ul>
+			</li>
+			<li class="level1">
+				<img src="js3-img/3-1/ico1.gif" alt="">黑名单
+				<ul>
+					<li class="level2">Panda8</li>
+					<li class="level2">Panda9</li>
+				</ul>
+			</li>
+		</ul>
+	</div>
+</body>
+</html>
