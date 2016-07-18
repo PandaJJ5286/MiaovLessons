@@ -10,7 +10,8 @@
 		.level1 h2 {background:url(js3-img/3-1/ico1.gif) no-repeat 5px center #63f7ff; padding-left: 19px;height:40px;line-height: 40px;font-weight: normal;cursor: pointer;}
 		.level1 h2.active{background: url(js3-img/3-1/ico2.gif) no-repeat 5px center #f7f794;}
 		.level1 ul{display: none;}
-		.level2{width:281px;background: #fff;border-bottom:1px solid #000;padding-left: 19px;font-size: 16px;}
+		.level1 ul li{width:281px;background: #fff;border-bottom:1px solid #000;padding-left: 19px;font-size: 16px;cursor:pointer;}
+		.level1 ul li.hover { background:#6FF; }
 	</style>
 
 	<script type="text/javascript">
@@ -20,25 +21,52 @@
 			var aH2 = oUl.getElementsByTagName('h2');
 			var aUl = oUl.getElementsByTagName('ul');
 			var aLi = null;
-			
-			var num = null;
+			var arrLi = [];
 			
 			for (var i = 0; i < aH2.length; i++) {
 				aH2[i].index = i;
-				this.onOff = true;
 				aH2[i].onclick = function(){
-					if(this.onOff == true){
+					
+					for( var i=0; i<aH2.length; i++ ){
+						if( i != this.index ){
+							aUl[i].style.display = 'none';
+							aH2[i].className = '';
+						}
+					}
+
+					if(this.className == ''){
 						this.className = 'active';
 						aUl[this.index].style.display = 'block';
-						this.onOff = false;
 					} else {
 						this.className = '';
 						aUl[this.index].style.display = 'none';
-						this.onOff = true;
 					}
 					
 				};
 			};
+
+			for (var i = 0; i < aUl.length; i++) {
+				aLi = aUl[i].getElementsByTagName('li');
+				for (var j = 0; j < aLi.length; j++) {
+					arrLi.push(aLi[j]);
+				}
+			}
+
+			for (var i = 0; i < arrLi.length; i++) {
+				arrLi[i].onclick = function(){
+					for (var i = 0; i < arrLi.length; i++) {
+						if(arrLi[i] != this){
+							arrLi[i].className = '';
+						}
+					}
+
+					if(this.className == ''){
+						this.className = 'hover';
+					}else{
+						this.className = '';
+					}
+				};
+			}
 		};
 	</script>
 </head>
@@ -48,25 +76,25 @@
 			<li class="level1">
 				<h2>我的好友</h2>
 				<ul>
-					<li class="level2">Panda1</li>
-					<li class="level2">Panda2</li>
-					<li class="level2">Panda3</li>
-					<li class="level2">Panda4</li>
+					<li>Panda1</li>
+					<li>Panda2</li>
+					<li>Panda3</li>
+					<li>Panda4</li>
 				</ul>
 			</li>
 			<li class="level1">
 				<h2>企业好友</h2>
 				<ul>
-					<li class="level2">Panda5</li>
-					<li class="level2">Panda6</li>
-					<li class="level2">Panda7</li>
+					<li>Panda5</li>
+					<li>Panda6</li>
+					<li>Panda7</li>
 				</ul>
 			</li>
 			<li class="level1">
 				<h2>黑名单</h2>
 				<ul>
-					<li class="level2">Panda8</li>
-					<li class="level2">Panda9</li>
+					<li>Panda8</li>
+					<li>Panda9</li>
 				</ul>
 			</li>
 		</ul>
