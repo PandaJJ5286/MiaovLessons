@@ -4,12 +4,44 @@
 	<meta charset="UTF-8">
 	<title>JS3-2 带缩略图的图片切换效果</title>
 	<style type="text/css">
-		#container{background: #000;width:1000px;height:500px;position:absolute;top:50%;left:50%;margin-top: -250px;margin-left: -500px;}
+		div,img,span,a,ul,li{margin: 0;padding: 0;font-family: "Microsoft Yahei";}
+		a{text-decoration:none;}
+		li{list-style:none;}
+		#container{background: #000;width:960px;height:500px;position:absolute;top:50%;left:50%;margin-top: -250px;margin-left: -480px;}
+		#container div{color:white;padding-top: 10px;padding-left: 30px;height:20px;font-size:20px;font-weight:bold;}
+		div + img{width:900px;height:400px;margin-left:30px;margin-top: 20px;}
+		a{display: inline-block;}
+		span a{width:50px;height:50px;border-radius: 25px;color:white;font-size:40px;font-weight: bold;line-height: 50px;text-align: center;opacity: 0.6;filter:alpha(opacity=60);cursor:pointer;position: absolute;}
+		span a:hover{opacity: 1;filter:alpha(opacity=100);}
+		.left{background: url(js3-img/3-2/arrow_l.png) #ef9408;left:50px;top:225px;}
+		.right{background: url(js3-img/3-2/arrow_r.png) #ef9408;right:50px;top:225px;}
+		ul{position: absolute;left:300px;top:465px;width:360px;}
+		li{float: left;width:20px;margin-right:10px;}
+		li a{width:20px;height:20px;border-radius: 10px;background: #94a59c;}
+		li a:hover{background: #efbd00;}
+		li a img {width:90px;height:40px;}
 	</style>
 </head>
 <body>
 	<div id="container">
-		
+		<div>带缩略图的图片轮换</div>
+		<img src="js3-img/3-2/001.jpg" alt="">
+		<span><a href="JavaScript:;" class="left"></a></span>
+		<span><a href="JavaScript:;" class="right"></a></span>
+		<ul>
+			<li><a href="JavaScript:;"><img src="js3-img/3-2/001.jpg" alt=""></a></li>
+			<li><a href="JavaScript:;"></a></li>
+			<li><a href="JavaScript:;"></a></li>
+			<li><a href="JavaScript:;"></a></li>
+			<li><a href="JavaScript:;"></a></li>
+			<li><a href="JavaScript:;"></a></li>
+			<li><a href="JavaScript:;"></a></li>
+			<li><a href="JavaScript:;"></a></li>
+			<li><a href="JavaScript:;"></a></li>
+			<li><a href="JavaScript:;"></a></li>
+			<li><a href="JavaScript:;"></a></li>
+			<li><a href="JavaScript:;"></a></li>
+		</ul>
 	</div>
 </body>
 </html>
