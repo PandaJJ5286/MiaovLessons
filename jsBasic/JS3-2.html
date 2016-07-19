@@ -13,34 +13,93 @@
 		a{display: inline-block;}
 		span a{width:50px;height:50px;border-radius: 25px;color:white;font-size:40px;font-weight: bold;line-height: 50px;text-align: center;opacity: 0.6;filter:alpha(opacity=60);cursor:pointer;position: absolute;}
 		span a:hover{opacity: 1;filter:alpha(opacity=100);}
-		.left{background: url(js3-img/3-2/arrow_l.png) #ef9408;left:50px;top:225px;}
-		.right{background: url(js3-img/3-2/arrow_r.png) #ef9408;right:50px;top:225px;}
+		#left{background: url(js3-img/3-2/arrow_l.png) #ef9408;left:50px;top:225px;}
+		#right{background: url(js3-img/3-2/arrow_r.png) #ef9408;right:50px;top:225px;}
 		ul{position: absolute;left:300px;top:465px;width:360px;}
 		li{float: left;width:20px;margin-right:10px;}
-		li a{width:20px;height:20px;border-radius: 10px;background: #94a59c;}
-		li a:hover{background: #efbd00;}
-		li a img {width:90px;height:40px;}
+		li a{width:20px;height:20px;border-radius: 10px;background: #94a59c;position: relative;}
+		li a img {width:90px;height:40px;position: absolute;top:-50px;left:-35px;border:1px solid #eee;display: none;}
 	</style>
+	<script type="text/javascript">
+		window.onload = function(){
+			var imgs = ['001.jpg','002.jpg','003.jpg','004.jpg','005.jpg','006.jpg','007.jpg','008.jpg','009.jpg','010.jpg','011.jpg','012.jpg'];
+			var txt = ['January','February','March','April','May','June','July','August','September','October','November','December']
+
+			var oImg = document.getElementsByTagName('img')[0];
+			var oTxt = document.getElementById('txt');
+			var oLeft = document.getElementById('left');
+			var oRight = document.getElementById('right');
+			var oUl = document.getElementsByTagName('ul')[0];
+			var aAObj = oUl.getElementsByTagName('a');
+			var aImgs = oUl.getElementsByTagName('img');
+
+			var num = 0;
+			var oNum = null;
+
+			oRight.onclick = function(){
+
+				if(num == imgs.length-1){
+					num = -1;
+				}
+				num++;
+				oImg.src = 'js3-img/3-2/'+imgs[num];
+				oTxt.innerHTML = '带缩略图的图片轮换_' + txt[num];
+			};
+
+			oLeft.onclick = function(){
+
+				if(num == 0){
+					num = imgs.length;
+				}
+				num--;
+				oImg.src = 'js3-img/3-2/'+imgs[num];
+				oTxt.innerHTML = '带缩略图的图片轮换_' + txt[num];
+			};
+
+			for (var i = 0; i < aAObj.length; i++) {
+				aAObj[i].index = i;
+				
+				aAObj[i].onmouseover = function(){
+					aImgs[this.index].style.display = 'inline-block';
+				};
+
+				aAObj[i].onmouseout = function(){
+					aImgs[this.index].style.display = 'none';
+				};
+
+				aAObj[i].onclick = function(){
+					if(typeof(oNum) == 'number'){
+						aAObj[oNum].style.backgroundColor = '#94a59c';
+					}
+					this.style.backgroundColor = '#efbd00';
+					oImg.src = 'js3-img/3-2/'+imgs[this.index];
+					oTxt.innerHTML = '带缩略图的图片轮换_' + txt[this.index];
+					num = this.index;
+					oNum = this.index;
+				}
+			}
+		};
+	</script>
 </head>
 <body>
 	<div id="container">
-		<div>带缩略图的图片轮换</div>
+		<div id="txt">带缩略图的图片轮换_January</div>
 		<img src="js3-img/3-2/001.jpg" alt="">
-		<span><a href="JavaScript:;" class="left"></a></span>
-		<span><a href="JavaScript:;" class="right"></a></span>
+		<span><a href="JavaScript:;" id="left"></a></span>
+		<span><a href="JavaScript:;" id="right"></a></span>
 		<ul>
 			<li><a href="JavaScript:;"><img src="js3-img/3-2/001.jpg" alt=""></a></li>
-			<li><a href="JavaScript:;"></a></li>
-			<li><a href="JavaScript:;"></a></li>
-			<li><a href="JavaScript:;"></a></li>
-			<li><a href="JavaScript:;"></a></li>
-			<li><a href="JavaScript:;"></a></li>
-			<li><a href="JavaScript:;"></a></li>
-			<li><a href="JavaScript:;"></a></li>
-			<li><a href="JavaScript:;"></a></li>
-			<li><a href="JavaScript:;"></a></li>
-			<li><a href="JavaScript:;"></a></li>
-			<li><a href="JavaScript:;"></a></li>
+			<li><a href="JavaScript:;"><img src="js3-img/3-2/002.jpg" alt=""></a></li>
+			<li><a href="JavaScript:;"><img src="js3-img/3-2/003.jpg" alt=""></a></li>
+			<li><a href="JavaScript:;"><img src="js3-img/3-2/004.jpg" alt=""></a></li>
+			<li><a href="JavaScript:;"><img src="js3-img/3-2/005.jpg" alt=""></a></li>
+			<li><a href="JavaScript:;"><img src="js3-img/3-2/006.jpg" alt=""></a></li>
+			<li><a href="JavaScript:;"><img src="js3-img/3-2/007.jpg" alt=""></a></li>
+			<li><a href="JavaScript:;"><img src="js3-img/3-2/008.jpg" alt=""></a></li>
+			<li><a href="JavaScript:;"><img src="js3-img/3-2/009.jpg" alt=""></a></li>
+			<li><a href="JavaScript:;"><img src="js3-img/3-2/010.jpg" alt=""></a></li>
+			<li><a href="JavaScript:;"><img src="js3-img/3-2/011.jpg" alt=""></a></li>
+			<li><a href="JavaScript:;"><img src="js3-img/3-2/012.jpg" alt=""></a></li>
 		</ul>
 	</div>
 </body>
