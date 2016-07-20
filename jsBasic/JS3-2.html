@@ -34,7 +34,8 @@
 			var aImgs = oUl.getElementsByTagName('img');
 
 			var num = 0;
-			var oNum = null;
+			var oNum = 0;
+			aAObj[num].style.backgroundColor = '#efbd00';
 
 			oRight.onclick = function(){
 
@@ -44,6 +45,11 @@
 				num++;
 				oImg.src = 'js3-img/3-2/'+imgs[num];
 				oTxt.innerHTML = '带缩略图的图片轮换_' + txt[num];
+				if(typeof(oNum) == 'number'){
+					aAObj[oNum].style.backgroundColor = '#94a59c';
+				}
+				aAObj[num].style.backgroundColor = '#efbd00';
+				oNum = num;
 			};
 
 			oLeft.onclick = function(){
@@ -54,7 +60,12 @@
 				num--;
 				oImg.src = 'js3-img/3-2/'+imgs[num];
 				oTxt.innerHTML = '带缩略图的图片轮换_' + txt[num];
-			};
+				if(typeof(oNum) == 'number'){
+					aAObj[oNum].style.backgroundColor = '#94a59c';
+				}
+				aAObj[num].style.backgroundColor = '#efbd00';
+				oNum = num;
+		};
 
 			for (var i = 0; i < aAObj.length; i++) {
 				aAObj[i].index = i;
@@ -68,9 +79,7 @@
 				};
 
 				aAObj[i].onclick = function(){
-					if(typeof(oNum) == 'number'){
-						aAObj[oNum].style.backgroundColor = '#94a59c';
-					}
+					aAObj[oNum].style.backgroundColor = '#94a59c';
 					this.style.backgroundColor = '#efbd00';
 					oImg.src = 'js3-img/3-2/'+imgs[this.index];
 					oTxt.innerHTML = '带缩略图的图片轮换_' + txt[this.index];
