@@ -4,14 +4,65 @@
 	<meta charset="UTF-8">
 	<title>JS3-3 控制多组图片切换</title>
 	<style>
-	html,body,div{margin:0;padding:0;}
-	#container{background: url(js3-img/3-3/bg3.png);width:356px;height:520px;}
-	#container img{position:absolute;z-index:-1;top:56px;left:20px;}
+		html,body,div{margin:0;padding:0;}
+		#container{width:800px;margin:10px auto;}
+		#btns{margin-bottom: 20px;}
+		#bg1,#bg2{background: url(js3-img/3-3/bg1.png);position:relative;display:inline-block;width:356px;height:520px;}
+		#bg2{background: url(js3-img/3-3/bg2.png);}
+		#bg1 img,#bg2 img{position:absolute;z-index:-1;top:58px;left:20px;height:450px;width:300px;}
 	</style>
+	<script>
+	window.onload = function(){
+		var aBtn = document.getElementsByTagName('input');
+		var aImg = document.getElementsByTagName('img');
+
+		var mImg = ['1.jpg','2.jpg','3.jpg','4.jpg','5.jpg'];
+		var fImg = ['6.jpg','7.jpg','8.jpg','9.jpg'];
+
+		var mNum = 0;
+		var fNum = 0;
+		
+		aBtn[1].onclick = function(){
+			mNum++;
+			if(mNum == mImg.length){
+				mNum = 0;
+			}
+			aImg[0].src = "js3-img/3-3/" + mImg[mNum];
+			fNum++;
+			if(fNum == fImg.length){
+				fNum = 0;
+			}
+			aImg[1].src = "js3-img/3-3/" + fImg[fNum];
+		};
+
+		aBtn[0].onclick = function(){
+			mNum--;
+			if(mNum == -1){
+				mNum = mImg.length-1;
+			}
+			aImg[0].src = "js3-img/3-3/" + mImg[mNum];
+			fNum--;
+			if(fNum == -1){
+				fNum = fImg.length-1;
+			}
+			aImg[1].src = "js3-img/3-3/" + fImg[fNum];
+		};
+	};
+	</script>
 </head>
 <body>
 	<div id="container">
-		<img src="js3-img/3-3/3.jpg" height='450' width='300' alt="">
+		<div id="btns">
+			<input type="button" value="上一组">
+			<input type="button" value="下一组">
+		</div>
+		<div id="bg1">
+			<img src="js3-img/3-3/1.jpg" alt="">
+		</div>
+		<div id="bg2">
+			<img src="js3-img/3-3/6.jpg" alt="">
+		</div>
 	</div>
+	
 </body>
 </html>
