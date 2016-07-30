@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>JS13-1 面试题测试</title>
+	<script>
+		/*4
+			 var y = 1, x = y = typeof x;
+			  x;
+			 1
+			 "number"
+			 undefined
+			 "undefined"
+
+			 D
+			 alert((function(){
+				var y=1,x = y = typeof x;
+				return x;
+			})());
+ 		*/
+		
+
+		/*		5.
+
+		  (function f(f){
+		    return typeof f();
+		  })(function(){ return 1; });
+		 "number"
+		 "undefined"
+		 "function"
+		 Error
+			A
+		 */
+		/*6
+			var foo = {
+			    bar: function() { return this.baz; },
+			    baz: 1
+		  	};
+		  	(function(){
+		   		return typeof arguments[0]();
+		  	})(foo.bar);
+		  	 "undefined"
+			 "object"
+			 "number"
+			 "function"
+			A
+			注意this指向，这里指向全局，即window
+		*/
+		/*8 
+			var f = (function f(){ return "1"; }, function g(){ return 2; });
+	  		alert(typeof f())//number 2
+	  		alert(typeof f);//function
+	  		alert(typeof g);//undefined;同题2.
+		*/
+		/*10
+			var x = [typeof x, typeof y][1];
+	 	 	alert(x);			// "undefined"
+	 	 	alert(typeof x);	// "string"
+	 	 	alert(typeof y);	// "undefined"
+	 	 	alert(typeof typeof x);	//  "string" 值为 "string"
+ 	 	*/
+ 	 	/*11
+			(function(foo){
+		    	alert(typeof foo.foo.bar);   // "number" 值为1
+		    	alert(typeof foo.bar);		 // "undefined"
+		  	})({ foo: { bar: 1 } });
+ 	 	*/
+ 	 	/*13
+			function f(){ return f; }
+	  		alert(new f());
+	  		alert(new f() instanceof f);
+ 	 	*/
+	 	 /*14
+	  		alert(return with(function(x, undefined){}){length});
+		 */
+ 	 	
+ 	 	/* 
+ 	 	//查找字符串中出现最多的字符及个数
+ 	 	var str = "sdfdfdfaaasswrerthhyh";
+
+ 	 	function test(str){
+ 	 		//var arr = str.split('');
+ 	 		var obj = {};
+ 	 		var num = 0;
+ 	 		var item = "";
+
+ 	 		for (var i = 0; i < str.length; i++) {
+ 	 			if(!obj[str[i]]){
+ 	 				obj[str[i]]=0;
+ 	 			}
+ 	 			obj[str[i]]++;
+ 	 			// for(var attr in obj){
+ 	 			// 	if(attr == str[i]){
+ 	 			// 		obj[attr]++;
+ 	 			// 	}
+ 	 			// }
+ 	 		}
+
+ 	 		for(var attr in obj){
+ 	 			if(num < obj[attr]){
+ 	 				num = obj[attr];
+ 	 				item = attr;
+ 	 			}else if(num == obj[attr]){
+ 	 				item += "," + attr;
+ 	 			}
+ 	 		}
+ 	 		
+
+ 	 		return("测试字符串为：" + str + "\n其中出现最多的字符为：" + item + ",个数为：" + num);
+ 	 	}
+
+ 	 	console.log(test(str));
+ 	 	*/
+ 	 	
+ 	 	/*
+ 	 	// 如何给字符串加千分符
+ 	 	var str = "2212345677533245";
+
+ 	 	function test(str){
+ 	 		var arr = str.split('').reverse();
+ 	 		var iArr = [];
+ 	 		var iNow = 0;
+ 	 		
+ 	 		for (var i = 0; i < arr.length; i++) {
+ 	 			if(i % 3 == 0 && i != 0){
+ 	 				iArr.push(',');
+ 	 			}
+ 	 			iArr.push(arr[i]);
+ 	 		}
+ 	 		
+ 	 		return "测试字符串为：" + str + "\n转换结果为：" + iArr.reverse().join('');
+ 	 	}
+
+ 	 	console.log(test(str));
+ 	 	*/
+		/*
+ 	 	// 返回一个只包含数字类型的数组   str = "sde234fde2fe345wr32we"; out:[234,2,345,32]
+ 	 	var str = "sde234fde2fe345wr32we";
+ 	 	function test(str){
+ 	 		var charCode = '';
+ 	 		var iFlag = false;
+ 	 		var iNum = '';
+ 	 		var iArr = [];
+
+ 	 		for (var i = 0; i < str.length; i++) {
+ 	 			
+ 	 			charCode = str.charCodeAt(i);
+
+ 	 			if (charCode < 48 || charCode > 57) {
+ 	 				
+ 	 				if(iFlag){
+ 	 					iArr.push(parseInt(iNum));
+ 	 					iNum = '';
+ 	 				}
+ 	 				iFlag = false;
+ 	 				
+ 	 			} else {
+ 	 				iNum += str[i];
+ 	 				iFlag = true;
+ 	 			}
+ 	 			
+ 	 		}
+ 	 		alert(iArr);
+ 	 		return "测试字符串为：" + str + "\n转换结果为：" + iArr;
+ 	 	}
+ 	 	console.log(test(str));
+		
+ 	 	var str = "sde234fde2fe345wr32we";
+ 	 	function test(str){
+		    var ret = [];
+		    var isNum = false;
+		    for(var i = 0, iLen = str.length; i < iLen; i++){
+		        var charCode = str.charCodeAt(i);
+		        if(charCode >= 48 && charCode <= 57){
+		            if(isNum){
+		                ret[ret.length - 1] += str[i];
+		            }else{
+		                ret.push(str[i]);
+		            }
+		            isNum = true;
+		        }else{
+		            isNum = false;
+		        }
+		    }
+		    return ret;
+		}
+		console.log(test(str));
+ 	 	*/
+
+	</script>
+</head>
+<body>
+	
+</body>
+</html>
